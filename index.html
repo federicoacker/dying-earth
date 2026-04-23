@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dying Earth - La Scelta Finale</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <!-- Alarm Overlay -->
+    <div id="alarm-overlay" class="alarm-overlay"></div>
+    
+    <!-- Audio Elements -->
+    <audio id="alarm-audio" loop>
+        <source src="./res/audio/alarm ship.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="takeoff-audio">
+        <source src="./res/audio/take-off.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- STEP 1: Welcome Page -->
+    <section id="step-1" class="step-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <!-- Main Title -->
+                    <header class="text-center mb-5">
+                        <h1 class="main-title">DYING EARTH</h1>
+                        <p class="subtitle">La scelta finale</p>
+                    </header>
+
+                    <!-- Game Context Container -->
+                    <div class="context-container mb-5">
+                        <div class="context-icon mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5"/>
+                                <path d="M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <p class="context-text">
+                            Immaginiamo che la terra stia morendo. L'unica possibilità di salvezza è una navicella spaziale con sette posti, che sta per partire per un altro pianeta. Intorno alla navicella vi sono undici persone che aspirano a partire.
+                        </p>
+                        <p class="context-text highlight-text">
+                            Voi vi trovate nella posizione di dover scegliere le sette che partiranno e costruiranno il primo nucleo di una nuova civiltà.
+                        </p>
+                        <p class="context-text">
+                            Di loro sappiamo pochissimo, quasi niente, e tuttavia su queste basi dovete scegliere anche rapidamente, altrimenti nessuno rimarrà in vita.
+                        </p>
+                    </div>
+
+                    <!-- Info Cards Row -->
+                    <div class="row g-4 mb-5">
+                        <div class="col-12 col-md-4">
+                            <div class="info-card">
+                                <div class="info-card-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
+                                    </svg>
+                                </div>
+                                <h3 class="info-card-title">Tempo Disponibile</h3>
+                                <p class="info-card-value">5 MINUTI</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="info-card">
+                                <div class="info-card-icon cyan">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="9" cy="7" r="4"/>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                    </svg>
+                                </div>
+                                <h3 class="info-card-title">Candidati Selezionabili</h3>
+                                <p class="info-card-value cyan">MASSIMO 7</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="info-card warning-card">
+                                <div class="info-card-icon warning">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                        <line x1="12" y1="9" x2="12" y2="13"/>
+                                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                    </svg>
+                                </div>
+                                <h3 class="info-card-title">Attenzione</h3>
+                                <p class="info-card-warning">Le scelte saranno irreversibili per tutta la civiltà umana</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Start Button -->
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <button id="start-btn" class="btn-start">
+                                <span class="btn-text">INIZIA IL TEST</span>
+                                <span class="btn-subtext">Il destino dell'umanità è nelle tue mani</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEP 2: Selection Page -->
+    <section id="step-2" class="step-section d-none">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <!-- Header with Timer -->
+                    <header class="step2-header">
+                        <div class="row align-items-center">
+                            <div class="col-12 col-md-6">
+                                <h2 class="step2-title">Seleziona i Sopravvissuti</h2>
+                                <p class="step2-subtitle">Scegli con saggezza. Non c'è ritorno.</p>
+                            </div>
+                            <div class="col-12 col-md-6 text-md-end">
+                                <div class="timer-container">
+                                    <span class="timer-label">TEMPO RIMANENTE</span>
+                                    <div id="countdown" class="countdown">05:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Selection Counter -->
+                    <div class="selection-counter mb-4">
+                        <span>Selezionati: </span>
+                        <span id="selection-count" class="count">0</span>
+                        <span> / 7</span>
+                    </div>
+
+                    <!-- Candidates List -->
+                    <div id="candidates-list" class="candidates-grid">
+                        <!-- Candidates will be rendered by JavaScript -->
+                    </div>
+
+                    <!-- Confirm Button -->
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <button id="confirm-btn" class="btn-confirm" disabled>
+                                <span class="btn-text">CONFERMA SCELTA</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirm-modal" class="modal-overlay d-none">
+            <div class="modal-content">
+                <div class="modal-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                </div>
+                <h3 class="modal-title">Conferma Definitiva</h3>
+                <p class="modal-text">Stai per decidere il destino dell'umanità. Questa scelta è <strong>IRREVERSIBILE</strong>.</p>
+                <p class="modal-text">Sei sicuro di voler procedere?</p>
+                <div class="modal-buttons">
+                    <button id="modal-cancel" class="btn-modal-cancel">ANNULLA</button>
+                    <button id="modal-confirm" class="btn-modal-confirm">CONFERMA</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STEP 3: Results Page -->
+    <section id="step-3" class="step-section d-none">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    <!-- Results Header -->
+                    <header class="text-center mb-5">
+                        <h2 class="results-title">Risultati</h2>
+                        <p class="results-subtitle">La verità dietro le etichette</p>
+                    </header>
+
+                    <!-- Reflection Container -->
+                    <div class="reflection-container mb-5">
+                        <p class="reflection-intro">
+                            Comprendere come i processi cognitivi influenzino le nostre decisioni è essenziale per mitigare l'impatto dei pregiudizi involontari.
+                        </p>
+                        <p class="reflection-text">
+                            Analizzare il divario tra percezione e realtà permette di approcciare ogni scelta con maggiore rigore critico.
+                        </p>
+                        <ul class="reflection-list">
+                            <li>
+                                <strong>Semplificazione Cognitiva:</strong> Le etichette riducono la complessità ambientale, ma generano distorsioni che portano a giudizi superficiali e standardizzati.
+                            </li>
+                            <li>
+                                <strong>Meccanismi di Bias:</strong> I pregiudizi agiscono come filtri sistematici, orientando le preferenze verso ciò che è familiare a scapito dell'analisi oggettiva.
+                            </li>
+                            <li>
+                                <strong>Consapevolezza Decisionale:</strong> Superare lo stereotipo richiede un passaggio attivo dal pensiero intuitivo a una valutazione razionale basata su dati concreti.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Results List -->
+                    <div id="results-list" class="results-grid">
+                        <!-- Results will be rendered by JavaScript -->
+                    </div>
+
+                    <!-- Restart Button -->
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <button id="restart-btn" class="btn-restart">
+                                <span class="btn-text">RIPETI IL TEST</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./scripts/candidates.js"></script>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
